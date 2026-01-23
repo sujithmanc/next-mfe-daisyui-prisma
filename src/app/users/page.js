@@ -7,8 +7,8 @@ import {
   Pencil,
   Trash2,
 } from "lucide-react"; // ✅ lucide-react icons
+import { API_BASE } from "@/lib/server";
 
-const API_BASE = window.location.origin; 
 // Fetch all users
 const fetchUsers = async () => {
   const res = await fetch(`${API_BASE}/api/users`);

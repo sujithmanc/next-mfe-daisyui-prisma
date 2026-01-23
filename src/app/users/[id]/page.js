@@ -2,8 +2,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-
-const API_BASE = window.location.origin; 
+import { API_BASE } from "@/lib/server";
 
 const getUser = async (id) => {
   const res = await fetch(`${API_BASE}/api/users/${id}`);

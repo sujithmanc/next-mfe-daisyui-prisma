@@ -1,8 +1,7 @@
 "use client";
+import { API_BASE } from "@/lib/server";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter, useParams } from "next/navigation";
-
-const API_BASE = window.location.origin; 
 
 async function fetchUser(id) {
   const res = await fetch(`${API_BASE}/api/users/${id}`);

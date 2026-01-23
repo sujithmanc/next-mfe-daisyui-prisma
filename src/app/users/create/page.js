@@ -1,8 +1,7 @@
 "use client";
+import { API_BASE } from "@/lib/server";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-
-const API_BASE = window.location.origin; 
 
 export default function CreateUser() {
   const router = useRouter();
