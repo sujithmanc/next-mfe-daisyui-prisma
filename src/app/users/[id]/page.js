@@ -3,8 +3,10 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 
+const API_BASE = window.location.origin; 
+
 const getUser = async (id) => {
-  const res = await fetch(`http://localhost:3000/api/users/${id}`);
+  const res = await fetch(`${API_BASE}/api/users/${id}`);
   if (!res.ok) throw new Error("Failed to load user");
   return res.json();
 };
@@ -22,7 +24,7 @@ export default function ViewUser() {
 
   const deleteUser = useMutation({
     mutationFn: async () => {
-      await fetch(`http://localhost:3000/api/users/${id}`, { method: "DELETE" });
+      await fetch(`${API_BASE}/api/users/${id}`, { method: "DELETE" });
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["users"]);

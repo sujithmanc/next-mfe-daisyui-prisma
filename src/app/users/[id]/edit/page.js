@@ -2,8 +2,10 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter, useParams } from "next/navigation";
 
+const API_BASE = window.location.origin; 
+
 async function fetchUser(id) {
-  const res = await fetch(`http://localhost:3000/api/users/${id}`);
+  const res = await fetch(`${API_BASE}/api/users/${id}`);
   return res.json();
 }
 
@@ -19,7 +21,7 @@ export default function EditUser() {
 
   const updateUser = useMutation({
     mutationFn: async (updatedUser) => {
-      await fetch(`http://localhost:3000/api/users/${params.id}`, {
+      await fetch(`${API_BASE}/api/users/${params.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedUser),

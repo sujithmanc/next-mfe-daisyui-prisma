@@ -8,9 +8,10 @@ import {
   Trash2,
 } from "lucide-react"; // ✅ lucide-react icons
 
+const API_BASE = window.location.origin; 
 // Fetch all users
 const fetchUsers = async () => {
-  const res = await fetch("http://localhost:3000/api/users");
+  const res = await fetch(`${API_BASE}/api/users`);
   return res.json();
 };
 
@@ -23,7 +24,7 @@ export default function UserHomePage() {
 
   const deleteUser = useMutation({
     mutationFn: async (id) => {
-      await fetch(`http://localhost:3000/api/users/${id}`, { method: "DELETE" });
+      await fetch(`${API_BASE}/api/users/${id}`, { method: "DELETE" });
     },
     onSuccess: () => queryClient.invalidateQueries(["users"]),
   });
@@ -31,8 +32,9 @@ export default function UserHomePage() {
   if (isLoading) return <div className="text-center">Loading...</div>;
 
   return (
-    <div className="p-6">
+    <div>
       {/* Create New Button */}
+      <h1 className="text-2xl font-bold mb-4">Users List{window.location.origin}</h1>
       <Link href="/users/create" className="btn btn-primary mb-4 flex items-center gap-2">
         <PlusCircle size={18} /> Create New
       </Link>

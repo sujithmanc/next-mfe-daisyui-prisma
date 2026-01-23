@@ -1,10 +1,10 @@
 import React from "react";
 
-
+const API_BASE = window.location.origin; 
 
 export default async function UserData() {
   // Fetch users from your API
-  const res = await fetch("http://localhost:3000/api/users");
+  const res = await fetch(`${API_BASE}/api/users`);
   const users = await res.json();
 
   return (

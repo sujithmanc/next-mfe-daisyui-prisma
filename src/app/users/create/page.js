@@ -2,13 +2,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 
+const API_BASE = window.location.origin; 
+
 export default function CreateUser() {
   const router = useRouter();
   const queryClient = useQueryClient();
 
   const createUser = useMutation({
     mutationFn: async (newUser) => {
-      await fetch("http://localhost:3000/api/users", {
+      await fetch(`${API_BASE}/api/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser),
