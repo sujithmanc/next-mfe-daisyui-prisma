@@ -2,6 +2,7 @@
 
 import { employeeService } from "@/lib/employee-service";
 import { empty } from "@prisma/client/runtime/library";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
@@ -54,6 +55,7 @@ export async function saveEmployeeAction(prevState, formData) {
     }
     // 2. Set success to true if we reach this point
     if (success) {
+        revalidatePath('/teams');
         redirect('/teams');
     }
 }
