@@ -3,11 +3,12 @@ import { useState } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import NavLink from "@/components/NavLink";
 
 
 export default function RootLayout({ children }) {
   const pages = [
-    { name: "Home", path: "/" },
+    { name: "Teams", path: "/teams" },
     { name: "Flipkart Cart", path: "/cart" },
     { name: "Employee", path: "/emp" },
     { name: "Data Fetch", path: "/datafetch" },
@@ -54,7 +55,7 @@ export default function RootLayout({ children }) {
             <ul className="menu menu-horizontal px-1">
               {pages.map((page) => (
                 <li key={page.path}>
-                  <Link href={page.path}>{page.name}</Link>
+                  <NavLink href={page.path}>{page.name}</NavLink>
                 </li>
               ))}
             </ul>

@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -13,4 +12,14 @@ model users {
   username   String   @db.VarChar(50)
   email      String?  @db.VarChar(100)
   created_at DateTime @default(now()) @db.Timestamp(0)
+}
+
+model employees {
+  emp_id    Int      @id @default(autoincrement())
+  name      String?  @db.VarChar(100)
+  gender    String?  @db.Char(1)
+  dept      String?  @db.VarChar(50)
+  job_title String?  @db.VarChar(50)
+  salary    Decimal? @db.Decimal(10, 2)
+  location  String?  @db.VarChar(50)
 }

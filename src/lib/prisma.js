@@ -1,10 +1,10 @@
-const { PrismaClient } = require("../generated/prisma");
+import { PrismaClient } from '@prisma/client';
 
-let prisma;
+// Prevent multiple instances of Prisma Client in development
+const prisma = global.prisma || new PrismaClient();
 
-if (!global.prisma) {
-  global.prisma = new PrismaClient();
+if (process.env.NODE_ENV !== 'production') {
+  global.prisma = prisma;
 }
-prisma = global.prisma;
-
-module.exports = prisma;
+  
+export default prisma;
