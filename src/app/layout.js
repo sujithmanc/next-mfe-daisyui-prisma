@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
     { name: "Food", path: "/food" },
     { name: "Dashboard", path: "/dashboard" },
     { name: "Users", path: "/users" },
+    { name: "Quiz", path: "/quiz" },
   ];
 
   const [menuOpen, setMenuOpen] = useState(false);
